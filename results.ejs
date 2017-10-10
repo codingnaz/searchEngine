@@ -1,0 +1,12 @@
+<h1></h1>
+<ul>
+  <% data["Search"].forEach(function(title){%>
+    <li>
+      <strong>
+        <%= title["Title"]%>
+      </strong>
+      -<%=title["Year"]%>
+    </li>
+  <% }) %>
+</ul>
+<a href = "/">Search Again!</a> 
