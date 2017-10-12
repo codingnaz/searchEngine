@@ -4,13 +4,14 @@ var requests = require('request');
 
 
 app.listen(process.env.PORT, process.env.IP, function(){
+  //this is just an indicator that the server is properly functioning. 
   console.log('Server listening to requests');
 });
-
+//will render a basic search menu 
 app.get('/search',function(req,res){
   res.render('search');
 });
-
+//once the search is complete you will be redirected to the results page.
 app.get("/results", function(req,res){
 var query= req.query.search;
 var url = "//http://www.omdbapi.com/?i=tt3896198&apikey=thewdb" + query;
@@ -19,4 +20,8 @@ var url = "//http://www.omdbapi.com/?i=tt3896198&apikey=thewdb" + query;
       var data = JSON.parse(body);
       res.render("results", {data:data});
     }
+  
+  app.get("*", function(req,res){
+    res.send("404 error,page could not be found!")
+  });
 });
